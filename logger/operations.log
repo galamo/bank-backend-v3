@@ -1,0 +1,3 @@
+{"message":{"operation":"deposit","accountId":"account-12345","amount":100},"level":"verbose","timestamp":"27-12-2018 20:07:16"}
+{"message":{"operation":"deposit","accountId":"account-12345","amount":100},"level":"verbose","timestamp":"27-12-2018 20:07:48"}
+{"message":{"operation":"deposit","accountId":"account-12345","amount":100},"level":"verbose","timestamp":"27-12-2018 20:07:79"}

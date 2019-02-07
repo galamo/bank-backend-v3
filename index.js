@@ -17,11 +17,10 @@ const configuration = require("./routes/config-router");
 const accountRouter = require("./routes/accounts-router");
 const CookieController = require("./controllers/cookieController");
 const UsersController = require("./controllers/usersController");
-
-mongoose.connect(
-  "mongodb://localhost/BankApplication",
-  { useNewUrlParser: true }
-);
+const upload = require("express-fileupload");
+mongoose.connect("mongodb://localhost/BankApplication", {
+  useNewUrlParser: true
+});
 
 var customCors = function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -33,18 +32,19 @@ var customCors = function(req, res, next) {
   }
   next();
 };
+app.use("/pictures", express.static(__dirname + "/uploads"));
 // app.use(cors());
 app.use(customCors);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(auth);
 app.use(cp());
+app.use(upload());
 
 //schema name:BankApplication
-mongoose.connect(
-  "mongodb://localhost/BankApplication",
-  { useNewUrlParser: true }
-);
+mongoose.connect("mongodb://localhost/BankApplication", {
+  useNewUrlParser: true
+});
 
 app.use(async (req, res, next) => {
   console.log("what is my cookie?", req.cookies.preferences);

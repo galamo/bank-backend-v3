@@ -51,4 +51,18 @@ router.get("/populate", (req, res, next) => {
     });
 });
 
+router.post("/uploadImage", (req, res, next) => {
+  const uploadedFile = req.files.file;
+  uploadedFile.mv(`uploads/${req.files.file.name}`, err => {
+    if (err) {
+      res.json({
+        message: `${req.files.file.name} was not saved`,
+        err: JSON.stringify(err)
+      });
+    } else {
+      res.json({ message: `${req.files.file.name} saved` });
+    }
+  });
+});
+
 module.exports = router;
